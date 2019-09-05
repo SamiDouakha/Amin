@@ -5,12 +5,7 @@ import "./styles.css";
 
 class App extends React.Component {
   state = {
-    inputs:
-    [
-      {id :"nom", name: "nom", nom :"" ,label:"Nom",placeholder:"Nom"} ,
-      {id :"prenom", name: "prenom" ,prenom:"",label:"Pénom",placeholder:'prénom...'} ,
-      {id :"email", name: "email", email :"",label:"Email" , placeholder: 'email@example.com'}
-    ] 
+    contact : {firstname :"" , lastname:"",email:"",message:"" }
     
   };
   hanleAjouterClient = () => {
@@ -43,61 +38,61 @@ class App extends React.Component {
     event.preventDefault()
     console.log(event.target)
   }
-
+  
+  handelChange = (event)=>{
+    
+    console.log(event.target.value)
+    console.log(event.target.name)
+    console.log('i am chnaging')
+  }
   render() {
     const title = "Contact me \"Am-You\"";
-    const inputs = this.state.inputs.map(input => {
-      return (
-        <div class="form-group"> <label for={input.name}>{input.label}</label>
-        <input class="form-control" id ={input.id} name={input.name} type="text" placeholder={input.placeholder}/>
-        </div>
-      );
-    });
+    
     return (
    
-<div class="container">
-  <div class="text-center">
-  <img class="img-thumbnail " src="https://avatars1.githubusercontent.com/u/52196250?s=400&v=4://i.pravatar.cc/150?u=a042581f4e29026704d" alt="avatar of am-you"/>
-	<h1 class="">{title}</h1>
+<div className="container">
+  <div className="text-center">
+  <img className="img-thumbnail " src="https://avatars1.githubusercontent.com/u/52196250?s=400&v=4://i.pravatar.cc/150?u=a042581f4e29026704d" alt="avatar of am-you"/>
+	<h1 className="">{title}</h1>
   </div>
-	<form  class="form" onSubmit={this.handleSubmit}>
+	<form  className="form" onSubmit={this.handleSubmit}>
 	
-	<div class="row">
+	<div className="row">
 		
-		<div class="col-md-6">
-		<div class="form-group">
-			<label for="firstName">First name</label>	
-			<input type="text" id ="firstName" name="firstName" placeholder="Fist name" class="form-control"/>
+		<div className="col-md-6">
+		<div className="form-group">
+			<label htmlFor="firstName">First name</label>	
+			<input onChange={this.handelChange} type="text" id ="firstName" name="firstName" placeholder="Fist name" value={this.state.contact.firstname} className="form-control"/>
 		</div>
 		</div>
 		
-		<div class="col-md-6">
-		<div class="form-group">
-			<label for="lastName">Last name</label>	
-			<input type="text" id ="lastName" name="lastName" placeholder="Fist name" class="form-control"/>
+		<div className="col-md-6">
+		<div className="form-group">
+			<label htmlFor="lastName">Last name</label>	
+			<input onChange={this.handelChange} type="text" id ="lastName" name="lastName" placeholder="Fist name" value={this.state.contact.lastname} className="form-control"/>
 		</div>
 		</div>
 	</div>	
 	
-	<div class="row">
-		<div class="col-md-12">
-		<div class="form-group">
-			<label for="email">Email</label>	
-			<input type="text" id ="email" name="email" placeholder="Your email here ... " class="form-control"/>
+	<div className="row">
+		<div className="col-md-12">
+		<div className="form-group">
+			<label htmlFor="email">Email</label>	
+			<input onChange={this.handelChange} type="text" id ="email" name="email" placeholder="Your email here ... " value={this.state.contact.email} className="form-control"/>
 		</div>
 		</div>
 	</div>
 	
-	<div class="row">
-		<div class="col-md-12">
-		<div class="form-group">
-			<label for="message">Message</label>	
-			<textarea class="form-control" id="message" name="message" placeholder="Your Message here ..."></textarea>
+	<div className="row">
+		<div className="col-md-12">
+		<div className="form-group">
+			<label htmlFor="message">Message</label>	
+			<textarea onChange={this.handelChange} className="form-control" id="message" name="message" placeholder="Your Message here ..." value ={this.state.contact.message}></textarea>
 		</div>
 		</div>
 	</div>
 
-		<button type="submit" class="btn btn btn-success btn-lg btn-block">Confirmer</button>
+		<button type="submit" className="btn btn btn-success btn-lg btn-block">Confirmer</button>
 
 	</form>
 </div>
